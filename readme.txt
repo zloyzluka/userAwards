@@ -19,15 +19,14 @@ example
 
 	public function saveAwards(){
 		if($this->_awards instanceof UserAwards) {
-			$ctrl = ctrl();
 			$awardsKey = 'user:'.$this->id.':awards';
-			$awards = $ctrl->redis->set($awardsKey, serialize(AwardsMigrations::getData($this->_awards)));
+			$awards = $redis->set($awardsKey, serialize(AwardsMigrations::getData($this->_awards)));
 			return true;
 		}
 		return false;	
 	}
 
-adding award to user
+adding awards to user
 
 	$userAwards = $user->getAwards();
 	$userAwards->getProgressBadge('voiter')->inc();
