@@ -8,7 +8,7 @@ example
 			$awards = $redis->get($awardsKey);
 			if($awards && !$force) {
 				$userAwards = new UserAwards();
-				$this->_awards = AwardsMigrations::setData(unserialize($awards), $userAwards);
+				$this->_awards = AwardsData::setData(unserialize($awards), $userAwards);
 			} else { 
 				$this->_awards = new UserAwards();
 				$this->saveAwards();	
@@ -20,7 +20,7 @@ example
 	public function saveAwards(){
 		if($this->_awards instanceof UserAwards) {
 			$awardsKey = 'user:'.$this->id.':awards';
-			$awards = $redis->set($awardsKey, serialize(AwardsMigrations::getData($this->_awards)));
+			$awards = $redis->set($awardsKey, serialize(AwardsData::getData($this->_awards)));
 			return true;
 		}
 		return false;	
