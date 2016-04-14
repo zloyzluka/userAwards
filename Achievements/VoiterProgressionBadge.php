@@ -1,5 +1,4 @@
 <?php 
-
 class VoiterProgressionBadge extends ProgressionBadge {
 	
 	protected $title = 'Top voter';

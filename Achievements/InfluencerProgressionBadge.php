@@ -1,5 +1,4 @@
 <?php 
-
 class InfluencerProgressionBadge extends ProgressionBadge {
 
 	protected $title = 'Influencer';

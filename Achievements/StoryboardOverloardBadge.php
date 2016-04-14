@@ -1,5 +1,4 @@
 <?php 
-
 class StoryboardOverloardBadge extends Badge{
 
 	protected $title = 'Lone wolf';

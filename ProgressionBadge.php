@@ -1,9 +1,5 @@
 <?php
-namespace P;
-
-if(!defined('P')) die('Nowai...');
-
-abstract class ProgressionBadge {
+abstract class ProgressionBadge  extends Award{
 
 	protected $title;
 	protected $description;
@@ -63,17 +59,8 @@ abstract class ProgressionBadge {
 		if(!$this->isMaxRank()) {
 			$this->next_rank_score = $this->progress_list[$this->current_rank + 1];
 			if (!$migration) {
-				//sendNotification(['message'=> $this->getNotificationMessage()]);
+				$this->sendNotification(['message'=> $this->getNotificationMessage()]);
 			}
 		}
 	}
-
-	private function getNotificationMessage() {
-		return sprintf($this->notification_template, $this->title, $this->current_rank);
-	}
-
-	public function __get($name) {
-		return $this->{$name};
-	}
-	
 }

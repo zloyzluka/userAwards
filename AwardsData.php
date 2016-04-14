@@ -1,5 +1,4 @@
 <?php
-
 class AwardsData {
 	
 	public static function setData($currentAwards, userAwards $newAwards) {
@@ -8,10 +7,9 @@ class AwardsData {
 
 		foreach ($medals as $medalName => $val) {
 			if($newAwards->getMedal($medalName)) {
-				foreach($val as $name => $count) {
+				foreach($val as $type => $count) {
 					if($count > 0) {
-						$newAwards->getMedal($medalName)->{$name} = $count;
-						$newAwards->getMedal($medalName)->total += $count;
+						$newAwards->getMedal($medalName)->set($type, $count, true);
 					}	
 				}		
 			}
@@ -38,7 +36,7 @@ class AwardsData {
 		$ret = [];
 		$medals = $currentAwards->getMedalsList();
 		foreach ($medals as $medalName => $val) {
-			if(is_a($val, 'P\Medal')) {
+			if(is_a($val, 'Medal')) {
 				foreach($val->ranks as $rank => $name) {
 					$count = $val->{$name};
 					if($count > 0) {
@@ -50,14 +48,14 @@ class AwardsData {
 
 		$badges = $currentAwards->getBadgesList();		
 		foreach ($badges as $badgeName => $val) {
-			if(is_a($val, 'P\Badge') && $val->earned) {
+			if(is_a($val, 'Badge') && $val->earned) {
 				$ret['badge'][$badgeName] = true;	
 			}
 		}
 		
 		$progressBadges = $currentAwards->getProgressBadgesList();
 		foreach ($progressBadges as $badgeName => $val) {
-			if(is_a($val, 'P\ProgressionBadge')) {
+			if(is_a($val, 'ProgressionBadge')) {
 				$ret['progressBadge'][$badgeName] = $val->current_score;
 			}
 		}

@@ -1,33 +1,33 @@
 <?php
-namespace P;
+abstract class Medal extends Award{
 
-if(!defined('P')) die('Nowai...');
-
-abstract class Medal {
-
-	public $ranks = [
+	protected $ranks = [
 		'1' => 'gold',
 		'2' => 'silver',
 		'3' => 'bronze'
 	];
-	public $gold = 0;
-	public $silver = 0;
-	public $bronze = 0;
+	protected $gold = 0;
+	protected $silver = 0;
+	protected $bronze = 0;
 
-	public $total = 0;
+	protected $total = 0;
 
-	public $title = 'MEDAL TITLE';
-	public $ico = 'icon name/url';
+	protected $title = 'MEDAL TITLE';
+	protected $ico = 'icon name/url';
 	protected $notification_template = 'Congratulations! You`ve won a %s "%s" trophy!';
 
-	public function add($rank) {
-		$this->{$this->ranks[$rank]}++;
-		$this->total++;
-		//sendNotification(['message'=> $this->getNotificationMessage($rank)]);
+	public function addMedal($rank) {
+		$this->set($rank);
 		return true;
 	}
 
-	private function getNotificationMessage($rank) {
-		return sprintf($this->notification_template, $rank, $this->title);
+	public function set($rank, $count = 1, $migration = false) {
+		$this->{$this->ranks[$rank]}+= $count;
+		$this->total+=$count;
+		if(!$migration){
+			$this->sendNotification(['message'=> $this->getNotificationMessage($rank)]);
+		}
+		return true;
 	}
+
 }

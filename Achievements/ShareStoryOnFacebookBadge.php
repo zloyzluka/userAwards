@@ -1,5 +1,4 @@
 <?php
-
 class ShareStoryOnFacebookBadge extends Badge{
 
 	protected $title = 'Likes, more likes';

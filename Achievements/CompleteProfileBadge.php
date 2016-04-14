@@ -1,5 +1,4 @@
 <?php
-
 class CompleteProfileBadge extends Badge{
 
 	protected $title = 'Open Book';

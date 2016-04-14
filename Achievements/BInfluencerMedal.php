@@ -1,6 +1,6 @@
 <?php
 class BInfluencerMedal extends Medal{
 
-	public $title = 'Biggest Influencer';
-	public $ico = 'influencer';
+	protected $title = 'Biggest Influencer';
+	protected $ico = 'influencer';
 }

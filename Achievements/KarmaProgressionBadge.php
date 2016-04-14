@@ -1,5 +1,4 @@
 <?php 
-
 class KarmaProgressionBadge extends ProgressionBadge {
 
 	protected $title = 'Karma';

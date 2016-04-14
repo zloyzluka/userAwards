@@ -1,25 +1,21 @@
 <?php
-namespace P;
-
-if(!defined('P')) die('Nowai...');
-
 class userAwards {
 
-	private $medals = [
+	protected $medals = [
 		'highestrated'  => true,
 		'b_influencer'  => true,
 		'popular_story' => true,
 		'karma'		    => true,
 	];
 
-	private $progressBadges = [
+	protected $progressBadges = [
 		'influencer' => true,
 		'comments'   => true,
 		'voiter'     => true,
 		'karma'      => true,
 	];
 
-	private $badges = [
+	protected $badges = [
 		'first_story' 	   		  => true,
 		'complete_profile'        => true,
 		'share_story_on_facebook' => true,
@@ -79,15 +75,6 @@ class userAwards {
 		return false;
 	}
 
-	public function getKarmaEarn() {
-		if(!is_a($this->karmaEarn, 'P\ProgressionBadge')) {
-			
-			$className = $this->generateClassName('karma_earn');
-			$this->karmaEarn = new $className();
-		}
-		return $this->karmaEarn;	
-	}
-
 	public function getMedalsList() {
 		$ret = [];
 		foreach ($this->medals as $medalName => $medal) {
@@ -130,8 +117,8 @@ class userAwards {
 		}
 		return $total;	
 	}
-
-	public function generateClassName($badgeName) {
+	/* TODO: move it to some helper */
+	protected function generateClassName($badgeName) {
 		$aux = str_replace('_', ' ', $badgeName);
 		$aux = ucwords($aux);
 		$className = str_replace(' ', '', $aux);

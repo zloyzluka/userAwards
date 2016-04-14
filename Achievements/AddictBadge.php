@@ -1,5 +1,4 @@
 <?php
-
 class AddictBadge extends Badge{
 
 	protected $title = 'Give me a Reupp.';

@@ -1,7 +1,6 @@
 <?php
-
 class PopularStoryMedal extends Medal{
 
-	public $title = 'MOST POPULAR STORY';
-	public $ico = 'story';
+	protected $title = 'MOST POPULAR STORY';
+	protected $ico = 'story';
 }

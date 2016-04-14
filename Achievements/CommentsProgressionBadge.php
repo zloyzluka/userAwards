@@ -1,5 +1,4 @@
 <?php 
-
 class CommentsProgressionBadge extends ProgressionBadge {
 
 	protected $title = 'Feedback champ';

@@ -1,7 +1,6 @@
 <?php
-
 class KarmaMedal extends Medal{
 
-	public $title = 'Karma King';
-	public $ico = 'karma';
+	protected $title = 'Karma King';
+	protected $ico = 'karma';
 }

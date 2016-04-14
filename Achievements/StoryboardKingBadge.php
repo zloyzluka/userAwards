@@ -1,5 +1,4 @@
 <?php 
-
 class StoryboardKingBadge extends Badge{
 
 	protected $title = 'Your highness';
